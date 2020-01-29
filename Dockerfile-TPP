@@ -1,8 +1,13 @@
 FROM ubuntu
 
-ADD bin/faketpp /bin/faketpp
-ADD scripts/tpp-policy.json /etc/tpp-policy.json
+RUN mkdir -p /tpp/faketpp
+ADD bin/faketpp /tpp/fakeserver
+ADD scripts/tpp-policy.json /tpp/tpp-policy.json
+ADD scripts/tpp-server.crt  /tpp/faketpp/server.crt
+ADD scripts/tpp-server.key  /tpp/faketpp/server.key
 
 EXPOSE 8080
 
-CMD ["/bin/faketpp","-policy=/etc/tpp-policy.json"]
+WORKDIR /tpp
+
+CMD ["./fakeserver","-policy=/tpp/tpp-policy.json"]
