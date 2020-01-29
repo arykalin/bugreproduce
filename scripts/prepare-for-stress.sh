@@ -16,3 +16,4 @@ vault write pki/root/generate/internal \
 vault write pki/config/urls \
   issuing_certificates="https://tpp:8080/v1/pki/ca" \
   crl_distribution_points="https://tpp:8080/v1/pki/crl"
+
