@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 vault secrets disable pki-backend/
 SHA256=$(sha256sum /home/user/vault/plugins/venafi-pki-backend | cut -d' ' -f1)
 vault write sys/plugins/catalog/secret/pki-backend-venafi sha_256="${SHA256}" command="venafi-pki-backend"

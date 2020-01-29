@@ -1,0 +1,8 @@
+FROM ubuntu
+
+ADD bin/faketpp /bin/faketpp
+ADD scripts/tpp-policy.json /etc/tpp-policy.json
+
+EXPOSE 8080
+
+CMD ["/bin/faketpp","-policy=/etc/tpp-policy.json"]

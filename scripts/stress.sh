@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ERRORS=0
 for i in {0..3000}
 do
