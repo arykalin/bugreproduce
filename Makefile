@@ -146,4 +146,6 @@ docker_server_mount:
 
 reproduce_humana_bag:
 	./scripts/prepare-for-stress.sh
+	sleep 10
+	@echo "Running stress test"
 	./scripts/stress.sh
