@@ -25,6 +25,7 @@ ADD scripts /scripts
 #Add consul configs
 ADD scripts/vault-config-with-consul.hcl /config/
 
+ADD scripts/tpp-server.crt /opt/venafi/bundle.pem
 
 # 8200/tcp is the primary interface that applications use to interact with
 # Vault.

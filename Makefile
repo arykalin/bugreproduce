@@ -133,12 +133,12 @@ docker_server_logs:
 docker_server_sh:
 	$(DOCKER_CMD) sh
 
-docker_server: docker_server_prepare docker_server_down docker_server_up docker_server_init docker_server_unseal docker_server_login mount_docker
+docker_server: docker_server_prepare docker_server_down docker_server_up docker_server_init docker_server_unseal docker_server_login docker_server_mount
 	@echo "Vault started. To run make command export VAULT_TOKEN variable and run make with -e flag, for example:"
 	@echo "export VAULT_TOKEN=enter-root-token-here"
 	@echo "make cloud -e"
 
-mount_docker:
+docker_server_mount:
 	$(eval SHA256 := $(shell echo $$($(DOCKER_CMD) $(SHA256_DOCKER_CMD))))
 	$(VAULT_CMD) write sys/plugins/catalog/$(PLUGIN_NAME) sha_256="$$SHA256" command="$(PLUGIN_NAME)"
 	$(VAULT_CMD) secrets disable $(MOUNT) || echo "Secrets already disabled"

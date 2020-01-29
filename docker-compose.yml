@@ -26,12 +26,7 @@ services:
       TRUST_BUNDLE: /opt/venafi/bundle.pem
     ports:
     - "8200:8200"
-    extra_hosts:
-    - "ha-tpp1.sqlha.com:192.168.6.23"
-    volumes:
-    #    If you want to use trust bundle file option
-    - /opt/venafi/bundle.pem:/opt/venafi/bundle.pem
-    entrypoint: /scripts/wait-for-it.sh -t 20 -h consul -p 8500 -s -- vault server -config=/config/vault-config-with-consul.hcl -log-level=debug
+    entrypoint: vault server -config=/config/vault-config-with-consul.hcl -log-level=debug
 
   tpp:
     build:
