@@ -143,3 +143,7 @@ docker_server_mount:
 	$(VAULT_CMD) write sys/plugins/catalog/$(PLUGIN_NAME) sha_256="$$SHA256" command="$(PLUGIN_NAME)"
 	$(VAULT_CMD) secrets disable $(MOUNT) || echo "Secrets already disabled"
 	$(VAULT_CMD) secrets enable -path=$(MOUNT) -plugin-name=$(PLUGIN_NAME) plugin
+
+reproduce_humana_bag:
+	./scripts/prepare-for-stress.sh
+	./scripts/stress.sh
